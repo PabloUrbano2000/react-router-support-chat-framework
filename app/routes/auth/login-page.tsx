@@ -63,7 +63,7 @@ export async function action({
   session.set('name', user.name)
 
   // Login succeeded, send them to the home page.
-  return redirect("/auth/login", {
+  return redirect("/chat", {
     headers: {
       "Set-Cookie": await commitSession(session),
     },
