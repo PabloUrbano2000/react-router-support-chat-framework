@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button } from "~/components/ui/button"
 import { Textarea } from "~/components/ui/textarea"
 import { ScrollArea } from "~/components/ui/scroll-area"
-import { Copy, Download, ThumbsUp, ThumbsDown, Send } from "lucide-react"
+import { Copy, Download, ThumbsUp, ThumbsDown, Send, MessageSquare } from "lucide-react"
 import { getClientMessages, sendMessage } from "~/fake/fake-data"
 import type { Route } from "./+types/client-chat-page"
 import { formatDate } from "~/lib/date-formatter"
@@ -41,15 +41,16 @@ export default function ClientChatPage({ loaderData}: Route.ComponentProps) {
     <div className="flex-1 flex flex-col">
       <ScrollArea className="flex-1 p-4">
         <div className="space-y-4">
-          {
-            messages.length === 0 && (
-              <div className="flex justify-center items-center h-full">
-                <p className="text-sm text-muted-foreground">
-                  No messages yet
-                </p>
+          {messages.length === 0 && (
+            <div className="flex flex-col justify-center items-center h-full gap-4">
+              <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
+                <MessageSquare className="h-6 w-6 text-muted-foreground" />
               </div>
-            )
-          }
+              <p className="text-sm text-muted-foreground">
+                No hay mensajes aún
+              </p>
+            </div>
+          )}
 
 
           {messages.map((message, index) => (
