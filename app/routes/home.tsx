@@ -1,13 +1,24 @@
+import { Navigate, redirect } from "react-router";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "Bienvenidos a React Router" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
 
+// para redirecciones es mejor hacerlo desde servidor
+export async function loader() {
+  return redirect('/chat')
+}
+
 export default function Home() {
-  return <Welcome />;
+  return <Navigate to="/chat"></Navigate>
+
+  // return (
+  //   <div>
+  //     <h1 className="text-4xl font-thin">Bienvenido a React Router!</h1>
+  //   </div>
+  // );
 }
